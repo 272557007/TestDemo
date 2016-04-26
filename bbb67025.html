@@ -124,20 +124,20 @@
             if (responseObject.errorCode !== 0)
                 console.log("onConnectionLost:"+responseObject.errorMessage);
         }
-        // 消息到达
+        // 消息到达            
+        var n=0;
+        var i=setInterval(function(){
+        n++;
+        var T=message.payloadString[23]+message.payloadString[24];
+        var H=message.payloadString[45]+message.payloadString[46];
+        console.log("当前温度："+T+";当前湿度"+H);
+        if(n>1)
+            clearInterval(i);
+        },1000);
         function onMessageArrived(message) {
             // console.log(message.topic + ': ' +  message.payloadString);
             //var T=message.payloadString[22]+message.payloadString[23]
             //console.log(T);
-            var n=0;
-            var i=setInterval(function(){
-            n++;
-            var T=message.payloadString[22]+message.payloadString[23];
-            var H=message.payloadString[45]+message.payloadString[46];
-            console.log("当前温度："+T+";当前湿度"+H);
-            if(n>1)
-                clearInterval(i);
-        },1000);
         }
 
         // // 串口数据发送部分
