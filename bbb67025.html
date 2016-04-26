@@ -127,7 +127,8 @@
         // 消息到达
         function onMessageArrived(message) {
             // console.log(message.topic + ': ' +  message.payloadString);
-            console.log(message.payloadString[20]+message.payloadString[21]);
+            var T=message.payloadString[22]+message.payloadString[23]
+            console.log(T);
         }
 
         // // 串口数据发送部分
