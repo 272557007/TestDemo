@@ -136,8 +136,9 @@
             var T=message.payloadString[23]+message.payloadString[24]
             var H=message.payloadString[45]+message.payloadString[46];
             //console.log("当前温度："+T+";当前湿度"+H);
-            document.getElementById('Temp').innerHTML ="当前温度："+T+"℃"+"<br/>"+"<br/>"+"当前湿度："
-                +H+"Rh";
+            //document.getElementById('Temp').innerHTML ="当前温度："+T+"℃"+"<br/>"+"<br/>"+"当前湿度："
+                //+H+"Rh";
+                document.getElementById('Temp').innerHTML ="<br/>"+T;
             setTimeout("onMessageArrived(message);", 1000); 
             // var n=0;
             // var i=setInterval(function(){
@@ -228,7 +229,9 @@
     console.error = console.debug = console.info =  console.log;
 
 </script>
-<span id="Temp"></span>
+<span id="Temp">
+    <P style="font-size:10px">当前温度</P>
+</span>
 
 </body>
 </html>
