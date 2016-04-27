@@ -40,7 +40,7 @@
 
    <div class="bar-footer" style="bottom:0;position:absolute;width:100%">
      <div class="item item-input-inset">
-         <p>设置阈值为:</P>
+         <p style="font-size:15px">设置阈值为:</P>
        <label class="item-input-wrapper">
          <input type="text" placeholder="message" id="message">
      </label>
@@ -155,7 +155,7 @@
          function send2uart() {
              if ( inputMessage.value.length == 0 ) return;
              var topic = device_id+'/in/write';
-             var commond = '{"11":"' + inputMessage.value + '"}';
+             var commond = '{"温度":"' + inputMessage.value + '"}';
              client.publish(topic, commond);
              console.log(inputMessage.value);
              inputMessage.value = '';
