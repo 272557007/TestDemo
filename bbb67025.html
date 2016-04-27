@@ -40,11 +40,12 @@
 
    <div class="bar-footer" style="bottom:0;position:absolute;width:100%">
      <div class="item item-input-inset">
+         <p>设置阈值为:</P>
        <label class="item-input-wrapper">
          <input type="text" placeholder="message" id="message">
      </label>
       <button class="button button-small button-royal" id="send2uart">
-         Uart
+         确定
      </button>
   </div> 
 
@@ -114,7 +115,7 @@
             // topic：通道
             // commond：指令
             client.publish = function(topic, commond) {
-                console.log("现在执行-->:"+commond);
+                console.log("设置阈值-->:"+commond);
                 message = new Paho.MQTT.Message(commond);
                 message.destinationName = topic;
                 client.send(message);
