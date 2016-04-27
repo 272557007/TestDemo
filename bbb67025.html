@@ -38,15 +38,15 @@
   </div>
   <div id="debug"></div>
 
-<!--   <div class="bar-footer" style="bottom:0;position:absolute;width:100%">
+   <div class="bar-footer" style="bottom:0;position:absolute;width:100%">
      <div class="item item-input-inset">
        <label class="item-input-wrapper">
          <input type="text" placeholder="message" id="message">
-     </label> -->
-<!--      <button class="button button-small button-royal" id="send2uart">
+     </label>
+      <button class="button button-small button-royal" id="send2uart">
          Uart
-     </button> -->
- <!-- </div> -->
+     </button>
+  </div> 
 
 <!--  <div class="button-bar">
      <a class="button" style="background:red; color:white" id="led_red">Red</a>
@@ -135,7 +135,7 @@
             var T=message.payloadString[23]+message.payloadString[24]
             var H=message.payloadString[45]+message.payloadString[46];
             //console.log("当前温度："+T+";当前湿度"+H);
-            document.getElementById('Temp').innerHTML ="当前温度："+T+"<br/>"+"<br/>"+"当前湿度："+H;
+            document.getElementById('Temp').innerHTML ="当前温度："+T+"℃"+"<br/>"+"<br/>"+"当前湿度："+H;
            setTimeout("onMessageArrived(message);", 1000); 
             // var n=0;
             // var i=setInterval(function(){
@@ -149,18 +149,18 @@
         }
 
         // // 串口数据发送部分
-        // var inputMessage = document.getElementById('message');
-        // // 将消息发送到指定的通道
-        // function send2uart() {
-        //     if ( inputMessage.value.length == 0 ) return;
-        //     var topic = device_id+'/in/write';
-        //     var commond = '{"11":"' + inputMessage.value + '"}';
-        //     client.publish(topic, commond);
-        //     console.log(inputMessage.value);
-        //     inputMessage.value = '';
-        // }
-        // // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
-        // document.querySelector('#send2uart').addEventListener('click', send2uart);
+         var inputMessage = document.getElementById('message');
+         // 将消息发送到指定的通道
+         function send2uart() {
+             if ( inputMessage.value.length == 0 ) return;
+             var topic = device_id+'/in/write';
+             var commond = '{"11":"' + inputMessage.value + '"}';
+             client.publish(topic, commond);
+             console.log(inputMessage.value);
+             inputMessage.value = '';
+         }
+        // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
+         document.querySelector('#send2uart').addEventListener('click', send2uart);
 
         // function led_on() {
         //     var topic = device_id+'/in/write';
