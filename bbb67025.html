@@ -22,8 +22,17 @@
         .gray {
             background-color: #ddd;
         }
+        #Temp_word,#Hum_word{
+            font-size:60px;
+        }
         #Temp{
-            font-size:20px;
+            padding:3px 5px;
+            width:300px;
+        }
+        #Hum{
+            padding:3px 5px;
+            width:300px;
+            float:left;
         }
         #debug span {
             display: block;
@@ -138,7 +147,8 @@
             //console.log("当前温度："+T+";当前湿度"+H);
             //document.getElementById('Temp').innerHTML ="当前温度："+T+"℃"+"<br/>"+"<br/>"+"当前湿度："
                 //+H+"Rh";
-                document.getElementById('Temp').innerHTML ="<br/>"+T;
+                document.getElementById('Temp_word').innerHTML ="<br/>"+T;
+                document.getElementById('Hum_word').innerHTML ="<br/>"+H;
             setTimeout("onMessageArrived(message);", 1000); 
             // var n=0;
             // var i=setInterval(function(){
@@ -229,9 +239,14 @@
     console.error = console.debug = console.info =  console.log;
 
 </script>
-<div>
+<div id="Temp">
     <P>当前温度</P>
-    <span id="Temp">
+    <span id="Temp_word">
+    </span>
+</div>
+<div id="Hum">
+    <P>当前湿度</P>
+    <span id="Hum_word">
     </span>
 </div>
 
