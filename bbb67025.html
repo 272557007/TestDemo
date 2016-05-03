@@ -181,6 +181,7 @@
 
         // // 串口数据发送部分
          var inputMessage = document.getElementById('message');
+         var inputMessage2 = document.getElementById('message2');
          //var inputMessage = document.getElementsByClassName('message');
          // 将消息发送到指定的通道
          function send2uart() {
@@ -192,9 +193,18 @@
              console.log(inputMessage.value);
              inputMessage.value = '';
          }
+        function send2uart2() {
+             if ( inputMessage2.value.length == 0 ) return;
+             var topic = device_id+'/in/write';
+             //var commond =inputMessage.value;
+             var commond = '{"PM2.5":"' + inputMessage2.value + '"}';
+             client.publish(topic, commond);
+             console.log(inputMessage2.value);
+             inputMessage2.value = '';
+         }
         // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
          document.querySelector('#send2uart').addEventListener('click', send2uart);
-         //document.querySelector('#send2uart2').addEventListener('click', send2uart);
+         document.querySelector('#send2uart2').addEventListener('click', send2uart);
 
         // function led_on() {
         //     var topic = device_id+'/in/write';
