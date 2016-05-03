@@ -142,6 +142,7 @@
             // commond：指令
             client.publish = function(topic, commond) {
                 console.log("设置阈值-->:"+inputMessage.value);
+                console.log("设置阈值-->:"+inputMessage2.value);
                 //console.log("设置阈值-->:"+commond);
                 message = new Paho.MQTT.Message(commond);
                 message.destinationName = topic;
