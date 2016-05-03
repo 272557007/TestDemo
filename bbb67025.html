@@ -185,8 +185,8 @@
          function send2uart() {
              if ( inputMessage.value.length == 0 ) return;
              var topic = device_id+'/in/write';
-             var commond =inputMessage.value;
-             //var commond = '{"温度":"' + inputMessage.value + '"}';
+             //var commond =inputMessage.value;
+             /var commond = '{"Temperature":"' + inputMessage.value + '"}';
              client.publish(topic, commond);
              console.log(inputMessage.value);
              inputMessage.value = '';
