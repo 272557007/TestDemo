@@ -59,16 +59,16 @@
         <div class="item item-input-inset">
             <p style="font-size:20px">设置阈值:</P>
             <label class="item-input-wrapper">
-             <input type="text" placeholder="温度" class="message">
+             <input type="text" placeholder="温度" id="message">
             </label>
-            <button class="button button-small button-royal" id="send2uart1">
+            <button class="button button-small button-royal" id="send2uart">
              确定
             </button>
         </div>
         <div class="item item-input-inset">
             <p style="font-size:20px">设置阈值:</P>
             <label class="item-input-wrapper">
-             <input type="text" placeholder="PM2.5" class="message">
+             <input type="text" placeholder="PM2.5" id="message2">
             </label>
             <button class="button button-small button-royal" id="send2uart2">
              确定
@@ -180,8 +180,8 @@
         }
 
         // // 串口数据发送部分
-         //var inputMessage = document.getElementById('message');
-         var inputMessage = document.getElementsByClassName('message');
+         var inputMessage = document.getElementById('message');
+         //var inputMessage = document.getElementsByClassName('message');
          // 将消息发送到指定的通道
          function send2uart() {
              if ( inputMessage.value.length == 0 ) return;
@@ -193,8 +193,8 @@
              inputMessage.value = '';
          }
         // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
-         document.querySelector('#send2uart1').addEventListener('click', send2uart);
-         document.querySelector('#send2uart2').addEventListener('click', send2uart);
+         document.querySelector('#send2uart').addEventListener('click', send2uart);
+         //document.querySelector('#send2uart2').addEventListener('click', send2uart);
 
         // function led_on() {
         //     var topic = device_id+'/in/write';
