@@ -211,7 +211,7 @@
              if ( inputMessage3.value.length == 0 ) return;
              var topic = device_id+'/in/write';
              //var commond =inputMessage.value;
-             var commond = '{"Humidity2.5":"' + inputMessage3.value + '"}';
+             var commond = '{"Humidity":"' + inputMessage3.value + '"}';
              client.publish(topic, commond);
              console.log(inputMessage3.value);
              inputMessage3.value = '';
