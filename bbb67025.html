@@ -161,13 +161,15 @@
 
         function onMessageArrived(message) {
             // console.log(message.topic + ': ' +  message.payloadString);
-            var T=message.payloadString[23]+message.payloadString[24]
+            var T=message.payloadString[23]+message.payloadString[24];
             var H=message.payloadString[45]+message.payloadString[46];
+            var P=2.5;
             //console.log("当前温度："+T+";当前湿度"+H);
             //document.getElementById('Temp').innerHTML ="当前温度："+T+"℃"+"<br/>"+"<br/>"+"当前湿度："
                 //+H+"Rh";
                 document.getElementById('Temp_word').innerHTML ="<br/>"+T;
                 document.getElementById('Hum_word').innerHTML ="<br/>"+H;
+                document.getElementById('PM_word').innerHTML ="<br/>"+P;
             setTimeout("onMessageArrived(message);", 1000); 
             // var n=0;
             // var i=setInterval(function(){
@@ -282,6 +284,12 @@
     <span id="Hum_word">
     </span>
     <P style="font-size:18px;float:left">Rh</P>
+</div>
+<div id="PM">
+    <P>当前湿度</P>
+    <span id="PM_word">
+    </span>
+    <P style="font-size:18px;float:left"></P>
 </div>
 
 </body>
