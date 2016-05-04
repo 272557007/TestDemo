@@ -65,6 +65,15 @@
             <button class="button button-small button-royal" id="send2uart2">
              确定
             </button>
+        </div>
+        <div class="item item-input-inset">
+            <p style="font-size:20px">设置阈值:</P>
+            <label class="item-input-wrapper">
+             <input type="text" placeholder="湿度" id="message3">
+            </label>
+            <button class="button button-small button-royal" id="send2uart3">
+             确定
+            </button>
         </div> 
 
 <!--  <div class="button-bar">
@@ -177,6 +186,7 @@
         // // 串口数据发送部分
          var inputMessage = document.getElementById('message');
          var inputMessage2 = document.getElementById('message2');
+         var inputMessage3 = document.getElementById('message3');
          //var inputMessage = document.getElementsByClassName('message');
          // 将消息发送到指定的通道
          function send2uart() {
@@ -197,9 +207,19 @@
              console.log(inputMessage2.value);
              inputMessage2.value = '';
          }
+        function send2uart3() {
+             if ( inputMessage3.value.length == 0 ) return;
+             var topic = device_id+'/in/write';
+             //var commond =inputMessage.value;
+             var commond = '{"Humidity2.5":"' + inputMessage3.value + '"}';
+             client.publish(topic, commond);
+             console.log(inputMessage3.value);
+             inputMessage3.value = '';
+         }
         // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
          document.querySelector('#send2uart').addEventListener('click', send2uart);
          document.querySelector('#send2uart2').addEventListener('click', send2uart2);
+         document.querySelector('#send2uart3').addEventListener('click', send2uart3);
 
         // function led_on() {
         //     var topic = device_id+'/in/write';
