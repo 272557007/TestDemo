@@ -196,6 +196,7 @@
                 // },1000);
             }else if(message.payloadString[3]=='P'){
                 var T=message.payloadString[9]+message.payloadString[10];
+                document.getElementById('test').innerHTML ="<br/>"+T;
                 document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));
             }
             
