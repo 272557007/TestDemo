@@ -177,7 +177,7 @@
                 var T=message.payloadString[23]+message.payloadString[24];
                 var H=message.payloadString[45]+message.payloadString[46];
                 var P=message.payloadString[58];
-                alert(message.payloadString[3]);
+                var M=message.payloadString[10]+message.payloadString[11];
                 //var M=message.payloadString[3]；
                 //***********************************
                 //console.log("当前温度："+T+";当前湿度"+H);
@@ -186,7 +186,7 @@
                     document.getElementById('Temp_word').innerHTML ="<br/>"+T;
                     document.getElementById('Hum_word').innerHTML ="<br/>"+H;
                     document.getElementById('PM_word').innerHTML ="<br/>"+P;
-                    //document.getElementById('test').innerHTML ="<br/>"+M;
+                    document.getElementById('test').innerHTML ="<br/>"+M;
                 setTimeout("onMessageArrived(message);", 1000); 
                 // var n=0;
                 // var i=setInterval(function(){
