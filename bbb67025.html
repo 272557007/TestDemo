@@ -58,8 +58,22 @@
   </div>
   <div id="debug"></div>
 
-   <!--<div class="bar-footer" style="bottom:0;position:absolute;width:100%">
+   <div class="bar-footer" style="bottom:0;position:absolute;width:100%">
         <div class="item item-input-inset">
+            <p style="font-size:20px">设置阈值:</P>
+            <label class="item-input-wrapper">
+             <input type="text" placeholder="温度" id="message" list="url_list">
+                <datalist id="url_list" class="display:none">
+                    <option label="温度" value="22" /></option>
+                    <option label="湿度" value="11" /></option>
+                    <option label="PM2.5" value="33" /></option>
+                </datalist>
+            </label>
+            <button class="button button-small button-royal" id="send2uart">
+             确定
+            </button>
+        </div>
+        <!--<div class="item item-input-inset">
             <p style="font-size:20px">设置阈值:</P>
             <label class="item-input-wrapper">
              <input type="text" placeholder="温度" id="message">
@@ -85,9 +99,9 @@
             <button class="button button-small button-royal" id="send2uart3">
              确定
             </button>
-        </div> 
+        </div>--> 
 
-  <div class="button-bar">
+<!--  <div class="button-bar">
      <a class="button" style="background:red; color:white" id="led_red">Red</a>
      <a class="button" style="background:green; color:white" id="led_green">Green</a>
      <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
@@ -95,8 +109,8 @@
  <div class="button-bar">
      <a class="button" style="background:white; color:black;" id="led_on">On</a>
      <a class="button" style="background:black; color:white;" id="led_off">Off</a>
- </div>
-</div>-->
+ </div>-->
+</div>
 
 <script src="http://api.easylink.io/assets/js/mqttws31.js"></script>
 <script>
@@ -184,7 +198,7 @@
                     document.getElementById('Temp_word').innerHTML ="<br/>"+T;
                     document.getElementById('Hum_word').innerHTML ="<br/>"+H;
                     document.getElementById('PM_word').innerHTML ="<br/>"+P;
-                 
+                
                 // var n=0;
                 // var i=setInterval(function(){
                 // n++;
@@ -195,18 +209,19 @@
                 //     clearInterval(i);
                 // },1000);
             }else if(message.payloadString[3]=='P'){
-                //var T=message.payloadString[10]+message.payloadString[11]+message.payloadString[12]+message.payloadString[13]+message.payloadString[14];
-                document.getElementById('test').innerHTML ="<br/>"+T;
-                //document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));
                 for(var i=0;i<64;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     for(var j=1;i<65;j++){
-                        //document.getElementById('b'+j) .style.backgroundColor=getC(parseFloat(T));
-                        document.getElementById('test').innerHTML ="<br/>"+T;
+                        document.getElementById('b'+j) .style.backgroundColor=getC(parseFloat(T));
                     }
                 }
+                
+                
+                //document.getElementById('test').innerHTML ="<br/>"+T;
+                //document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));
             }
-            //setTimeout("onMessageArrived(message);", 1000);
+            setTimeout("onMessageArrived(message);", 1000); 
+            
         }
         function getC(temp){
             var cr=0;
@@ -270,6 +285,7 @@
              inputMessage3.value = '';
          }
         // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
+        document.querySelector
          document.querySelector('#send2uart').addEventListener('click', send2uart);
          document.querySelector('#send2uart2').addEventListener('click', send2uart2);
          document.querySelector('#send2uart3').addEventListener('click', send2uart3);
@@ -357,8 +373,9 @@
     </span>
     <P style="font-size:18px;float:left"></P>
 </div>
-<p>打印<span id="test"></span></p>
-<!--<div id="bed" class="beda">
+
+<div id="bed" class="beda">
+        <p><span id="test"></span></p>
         <div id="b1" class="bedc"></div>
         <div id="b2" class="bedc"></div>
         <div id="b3" class="bedc"></div>
@@ -423,6 +440,7 @@
         <div id="b62" class="bedc"></div>
         <div id="b63" class="bedc"></div>
         <div id="b64" class="bedc"></div>
-    </div>-->
+
+    </div>
 </body>
 </html>
