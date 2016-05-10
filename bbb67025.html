@@ -87,7 +87,7 @@
             </button>
         </div> 
 
-<!--  <div class="button-bar">
+  <div class="button-bar">
      <a class="button" style="background:red; color:white" id="led_red">Red</a>
      <a class="button" style="background:green; color:white" id="led_green">Green</a>
      <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
@@ -201,7 +201,7 @@
                 for(var i=0;i<64;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     for(var j=1;i<65;j++){
-                        document.getElementById('b'+j) .style.backgroundColor=getC(parseFloat(T));
+                        //document.getElementById('b'+j) .style.backgroundColor=getC(parseFloat(T));
                         document.getElementById('test').innerHTML ="<br/>"+T;
                     }
                 }
@@ -423,8 +423,6 @@
         <div id="b62" class="bedc"></div>
         <div id="b63" class="bedc"></div>
         <div id="b64" class="bedc"></div>
-        
-
     </div>-->
 </body>
 </html>
