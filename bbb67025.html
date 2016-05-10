@@ -236,7 +236,7 @@
              console.log(inputMessage.value);
              inputMessage.value = '';
          }
-        function send2uart2() {
+        /*function send2uart2() {
              if ( inputMessage2.value.length == 0 ) return;
              var topic = device_id+'/in/write';
              //var commond =inputMessage.value;
@@ -253,11 +253,11 @@
              client.publish(topic, commond);
              console.log(inputMessage3.value);
              inputMessage3.value = '';
-         }
+         }*/
         // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
          document.querySelector('#send2uart').addEventListener('click', send2uart);
-         document.querySelector('#send2uart2').addEventListener('click', send2uart2);
-         document.querySelector('#send2uart3').addEventListener('click', send2uart3);
+         /*document.querySelector('#send2uart2').addEventListener('click', send2uart2);
+         document.querySelector('#send2uart3').addEventListener('click', send2uart3);*/
 
         // function led_on() {
         //     var topic = device_id+'/in/write';
