@@ -184,7 +184,7 @@
                     document.getElementById('Temp_word').innerHTML ="<br/>"+T;
                     document.getElementById('Hum_word').innerHTML ="<br/>"+H;
                     document.getElementById('PM_word').innerHTML ="<br/>"+P;
-                
+                setTimeout("onMessageArrived(message);", 1000); 
                 // var n=0;
                 // var i=setInterval(function(){
                 // n++;
@@ -194,7 +194,7 @@
                 // if(n>2)
                 //     clearInterval(i);
                 // },1000);
-            }else if(message.payloadString[3]=='P'){
+            }/*else if(message.payloadString[3]=='P'){
                 for(var i=0;i<4;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     for(var j=1;i<5;j++){
@@ -206,8 +206,8 @@
                 
                 //document.getElementById('test').innerHTML ="<br/>"+T;
                 //document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));
-            }
-            setTimeout("onMessageArrived(message);", 1000); 
+            }*/
+            //setTimeout("onMessageArrived(message);", 1000); 
             
         }
         function getC(temp){
