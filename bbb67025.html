@@ -62,20 +62,6 @@
         <div class="item item-input-inset">
             <p style="font-size:20px">设置阈值:</P>
             <label class="item-input-wrapper">
-             <input type="text" placeholder="温度" id="message" list="url_list">
-                <datalist id="url_list" class="display:none">
-                    <option label="温度" value="22" /></option>
-                    <option label="湿度" value="11" /></option>
-                    <option label="PM2.5" value="33" /></option>
-                </datalist>
-            </label>
-            <button class="button button-small button-royal" id="send2uart">
-             确定
-            </button>
-        </div>
-        <!--<div class="item item-input-inset">
-            <p style="font-size:20px">设置阈值:</P>
-            <label class="item-input-wrapper">
              <input type="text" placeholder="温度" id="message">
             </label>
             <button class="button button-small button-royal" id="send2uart">
@@ -99,7 +85,7 @@
             <button class="button button-small button-royal" id="send2uart3">
              确定
             </button>
-        </div>--> 
+        </div> 
 
 <!--  <div class="button-bar">
      <a class="button" style="background:red; color:white" id="led_red">Red</a>
@@ -213,6 +199,7 @@
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     for(var j=1;i<65;j++){
                         document.getElementById('b'+j) .style.backgroundColor=getC(parseFloat(T));
+                        document.getElementById('test').innerHTML ="<br/>"+T;
                     }
                 }
                 
@@ -220,7 +207,7 @@
                 //document.getElementById('test').innerHTML ="<br/>"+T;
                 //document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));
             }
-            setTimeout("onMessageArrived(message);", 1000); 
+            setTimeout("onMessageArrived(message);", 5000); 
             
         }
         function getC(temp){
@@ -285,7 +272,6 @@
              inputMessage3.value = '';
          }
         // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
-        document.querySelector
          document.querySelector('#send2uart').addEventListener('click', send2uart);
          document.querySelector('#send2uart2').addEventListener('click', send2uart2);
          document.querySelector('#send2uart3').addEventListener('click', send2uart3);
