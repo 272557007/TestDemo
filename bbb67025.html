@@ -39,6 +39,17 @@
             word-wrap: break-word;
             margin-bottom: 2px;
         }
+        .bedc{
+            margin: 1px;
+            background-color: #00ffff;
+            width: 15px;
+            height: 15px;
+            float: left;
+        }
+        .beda{
+            width: 70px;
+            height: 274px;    
+        }
     </style>
 </head>
 <body>
@@ -161,28 +172,61 @@
         // 消息到达            
 
         function onMessageArrived(message) {
-            // console.log(message.topic + ': ' +  message.payloadString);
-            var T=message.payloadString[23]+message.payloadString[24];
-            var H=message.payloadString[45]+message.payloadString[46];
-            var P=message.payloadString[58];
-            //console.log("当前温度："+T+";当前湿度"+H);
-            //document.getElementById('Temp').innerHTML ="当前温度："+T+"℃"+"<br/>"+"<br/>"+"当前湿度："
-                //+H+"Rh";
-                document.getElementById('Temp_word').innerHTML ="<br/>"+T;
-                document.getElementById('Hum_word').innerHTML ="<br/>"+H;
-                document.getElementById('PM_word').innerHTML ="<br/>"+P;
-            setTimeout("onMessageArrived(message);", 1000); 
-            // var n=0;
-            // var i=setInterval(function(){
-            // n++;
-            // var T=message.payloadString[23]+message.payloadString[24];
-            // var H=message.payloadString[45]+message.payloadString[46];
-            // console.log("当前温度："+T+";当前湿度"+H);
-            // if(n>2)
-            //     clearInterval(i);
-            // },1000);
+            if(message.payloadString[2]=='d'){
+                    // console.log(message.topic + ': ' +  message.payloadString);
+                var T=message.payloadString[23]+message.payloadString[24];
+                var H=message.payloadString[45]+message.payloadString[46];
+                var P=message.payloadString[58];
+                //***********************************
+                //console.log("当前温度："+T+";当前湿度"+H);
+                //document.getElementById('Temp').innerHTML ="当前温度："+T+"℃"+"<br/>"+"<br/>"+"当前湿度："
+                    //+H+"Rh";
+                    document.getElementById('Temp_word').innerHTML ="<br/>"+T;
+                    document.getElementById('Hum_word').innerHTML ="<br/>"+H;
+                    document.getElementById('PM_word').innerHTML ="<br/>"+P;
+                setTimeout("onMessageArrived(message);", 1000); 
+                // var n=0;
+                // var i=setInterval(function(){
+                // n++;
+                // var T=message.payloadString[23]+message.payloadString[24];
+                // var H=message.payloadString[45]+message.payloadString[46];
+                // console.log("当前温度："+T+";当前湿度"+H);
+                // if(n>2)
+                //     clearInterval(i);
+                // },1000);
+            }else if(message.payloadString[2]=='P'){
+                document.getElementById('b1') .style.backgroundColor=getC(message.payloadString[9]+message.payloadString[10]);
+            }
+            
         }
-
+        function getC(temp){
+            var cr=0;
+            var cg=0;
+            var cb=0;
+            if(temp>=6&&temp<16){
+                cr=0;
+                cg=255;
+                cb=(1-(temp-6)/10)*255;
+            }else if(temp>=16&&temp<26){
+                cr=((temp-16)/10)*255;
+                cg=255;
+                cb=0;
+            }else if(temp>=26&&temp<36){
+                cr=255;
+                cg=(1-(temp-26)/10)*255;
+                cb=0;
+            }else if(temp<6){
+                cr=0;
+                cg=255;
+                cb=255;
+            }else if(temp>36){
+                cr=255;
+                cg=0;
+                cb=0;
+            }
+            var getColor='rgb('+cr+','+cg+','+cb+')';
+            return getColor;
+        }
         // // 串口数据发送部分
          var inputMessage = document.getElementById('message');
          var inputMessage2 = document.getElementById('message2');
@@ -283,7 +327,8 @@
         };
     } (console.log.bind(console), document.getElementById("debug")));
     console.error = console.debug = console.info =  console.log;
-
+    //****************************************
+    
 </script>
 <div id="Temp">
     <P>当前温度</P>
@@ -304,5 +349,72 @@
     <P style="font-size:18px;float:left"></P>
 </div>
 
+<div id="bed" class="beda">
+        <div id="b1" class="bedc"></div>
+        <div id="b2" class="bedc"></div>
+        <div id="b3" class="bedc"></div>
+        <div id="b4" class="bedc"></div>
+        <div id="b5" class="bedc"></div>
+        <div id="b6" class="bedc"></div>
+        <div id="b7" class="bedc"></div>
+        <div id="b8" class="bedc"></div>
+        <div id="b9" class="bedc"></div>
+        <div id="b10" class="bedc"></div>
+        <div id="b11" class="bedc"></div>
+        <div id="b12" class="bedc"></div>
+        <div id="b13" class="bedc"></div>
+        <div id="b14" class="bedc"></div>
+        <div id="b15" class="bedc"></div>
+        <div id="b16" class="bedc"></div>
+        <div id="b17" class="bedc"></div>
+        <div id="b18" class="bedc"></div>
+        <div id="b19" class="bedc"></div>
+        <div id="b20" class="bedc"></div>
+        <div id="b21" class="bedc"></div>
+        <div id="b22" class="bedc"></div>
+        <div id="b23" class="bedc"></div>
+        <div id="b24" class="bedc"></div>
+        <div id="b25" class="bedc"></div>
+        <div id="b26" class="bedc"></div>
+        <div id="b27" class="bedc"></div>
+        <div id="b28" class="bedc"></div>
+        <div id="b29" class="bedc"></div>
+        <div id="b30" class="bedc"></div>
+        <div id="b31" class="bedc"></div>
+        <div id="b32" class="bedc"></div>
+        <div id="b33" class="bedc"></div>
+        <div id="b34" class="bedc"></div>
+        <div id="b35" class="bedc"></div>
+        <div id="b36" class="bedc"></div>
+        <div id="b37" class="bedc"></div>
+        <div id="b38" class="bedc"></div>
+        <div id="b39" class="bedc"></div>
+        <div id="b40" class="bedc"></div>
+        <div id="b41" class="bedc"></div>
+        <div id="b42" class="bedc"></div>
+        <div id="b43" class="bedc"></div>
+        <div id="b44" class="bedc"></div>
+        <div id="b45" class="bedc"></div>
+        <div id="b46" class="bedc"></div>
+        <div id="b47" class="bedc"></div>
+        <div id="b48" class="bedc"></div>
+        <div id="b49" class="bedc"></div>
+        <div id="b50" class="bedc"></div>
+        <div id="b51" class="bedc"></div>
+        <div id="b52" class="bedc"></div>
+        <div id="b53" class="bedc"></div>
+        <div id="b54" class="bedc"></div>
+        <div id="b55" class="bedc"></div>
+        <div id="b56" class="bedc"></div>
+        <div id="b57" class="bedc"></div>
+        <div id="b58" class="bedc"></div>
+        <div id="b59" class="bedc"></div>
+        <div id="b60" class="bedc"></div>
+        <div id="b61" class="bedc"></div>
+        <div id="b62" class="bedc"></div>
+        <div id="b63" class="bedc"></div>
+        <div id="b64" class="bedc"></div>
+
+    </div>
 </body>
 </html>
