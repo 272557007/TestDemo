@@ -172,7 +172,7 @@
         // 消息到达            
 
         function onMessageArrived(message) {
-            if(message.payloadString[2]=='d'){
+            if(message.payloadString[3]=='d'){
                     // console.log(message.topic + ': ' +  message.payloadString);
                 var T=message.payloadString[23]+message.payloadString[24];
                 var H=message.payloadString[45]+message.payloadString[46];
@@ -194,7 +194,7 @@
                 // if(n>2)
                 //     clearInterval(i);
                 // },1000);
-            }else if(message.payloadString[2]=='P'){
+            }else if(message.payloadString[3]=='P'){
                 document.getElementById('b1') .style.backgroundColor=getC(message.payloadString[9]+message.payloadString[10]);
             }
             
