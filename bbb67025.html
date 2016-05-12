@@ -197,23 +197,27 @@
             var cr=0;
             var cg=0;
             var cb=0;
-            if(temp>=6&&temp<16){
+            if(temp>=5&&temp<12.75){
                 cr=0;
-                cg=255;
-                cb=(1-(temp-6)/10)*255;
-            }else if(temp>=16&&temp<26){
-                cr=((temp-16)/10)*255;
-                cg=255;
-                cb=0;
-            }else if(temp>=26&&temp<36){
-                cr=255;
-                cg=(1-(temp-26)/10)*255;
-                cb=0;
-            }else if(temp<6){
-                cr=0;
-                cg=255;
+                cg=((temp-5)/7.75)*255;
                 cb=255;
-            }else if(temp>36){
+            }else if(temp>=12.75&&temp<20.5){
+                cr=0
+                cg=255;
+                cb=(1-(temp-12.75)/7.75)*255;
+            }else if(temp>=20.5&&temp<28.25){
+                cr=((temp-20.5)/7.75)*255;
+                cg=255;
+                cb=0;
+            }else if(temp>=28.25&&temp<36){
+                cr=255;
+                cg=(1-(temp-28.25)/7.75)*255;
+                cb=0;
+            }else if(temp<5){
+                cr=0;
+                cg=0;
+                cb=255;
+            }else if(temp>=36){
                 cr=255;
                 cg=0;
                 cb=0;
