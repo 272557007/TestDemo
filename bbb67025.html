@@ -171,10 +171,9 @@
                 console.log("失去连接:"+responseObject.errorMessage);
         }
         // 消息到达            
-        
+        var count = 0;
+        var data = new Array();
         function onMessageArrived(message) {
-            var count = 0;
-            var data = new Array();
             if(message.payloadString[3]=='d'){
                     // console.log(message.topic + ': ' +  message.payloadString);
                 var T=message.payloadString[23]+message.payloadString[24];
@@ -199,7 +198,7 @@
                 //     clearInterval(i);
                 // },1000);
             }else if(message.payloadString[3]=='P'){
-                /*for(var i=0;i<64;i++){
+                for(var i=0;i<64;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     
                         //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
@@ -212,7 +211,7 @@
                 document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));*/
                 
                 
-                for(var i=0;i<64;i++){
+                /*for(var i=0;i<64;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     data[i] = data[i]+ T;
                         //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
@@ -227,7 +226,7 @@
                         data[i]=data[i]/4;
                         document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
                     }
-                }
+                }*/
             }
             //setTimeout("onMessageArrived(message);", 1000); 
             
