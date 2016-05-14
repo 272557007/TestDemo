@@ -173,6 +173,11 @@
         // 消息到达            
         var count = 0;
         var data = new Array();
+                       
+        for(var i=0;i<64;i++){
+            data[i]=0;
+        };
+                
         function onMessageArrived(message) {
             if(message.payloadString[3]=='d'){
                     // console.log(message.topic + ': ' +  message.payloadString);
@@ -210,11 +215,7 @@
                 document.getElementById('test').innerHTML ="<br/>"+T;
                 document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));*/
                 
-                if(count==0){
-                    for(var i=0;i<64;i++){
-                        data[i]=0;
-                    }
-                };
+
                 for(var i=0;i<64;i++){
                     
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
