@@ -221,20 +221,20 @@
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     data[i] = data[i]+ T;
                         //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
-                        document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
+                        //document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
                         //document.getElementById('test').innerHTML=T;
                     
                 };
                 count++;
                 document.getElementById('count') .innerHTML =count;
-                /*if(count%4==0){
+                if(count%4==0){
                     
                     for(var i=0;i<64;i++){
                         data[i]=data[i]/4;
                         document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
                         data[i]=0;
                     };
-                }*/
+                }
             }
             //setTimeout("onMessageArrived(message);", 1000); 
             
