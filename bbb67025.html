@@ -210,50 +210,35 @@
             }else if(message.payloadString[3]=='P'){
                 for(var i=0;i<64;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
-                    data[i]=parseFloat(T);
-                        //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
-                        document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
-                        //document.getElementById('test').innerHTML=T;
-                    
-                };
-                
-                for(var i=0;i<4;i++){
-                    for(var j=0;j<16;j++){
-                        if(j<4||j>12){
-                            
-                            ent = ent+data[i*16+j];
-                        }
-                    }
-                };
-                
-                a_ent=ent/32;
-                document.getElementById('enT').innerHTML=a_ent;
-                ent=0;
-                aent=0;
-               /* var T=message.payloadString[10]+message.payloadString[11]+message.payloadString[12]+message.payloadString[13]+message.payloadString[14];
-                document.getElementById('test').innerHTML ="<br/>"+T;
-                document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));*/
-                
-
-                /*for(var i=0;i<64;i++){
-                    
-                    var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
-                    data[i] = data[i]+ T;
+                    data[i]=data[i]+parseFloat(T);
                         //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
                         //document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
                         //document.getElementById('test').innerHTML=T;
                     
                 };
                 count++;
-                document.getElementById('count') .innerHTML =count;
+                //document.getElementById('count') .innerHTML =count;
                 if(count%4==0){
                     
-                    for(var i=0;i<64;i++){
-                        data[i]=data[i]/4;
-                        document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
-                        data[i]=0;
+                    for(var i=0;i<4;i++){
+                        for(var j=0;j<16;j++){
+                            data[i*16+j]=data[i*16+j]/4;
+                            document.getElementById('b'+parseInt(i*16+j+1)) .innerHTML =data[i*16+j];
+                            if(j<4||j>12){
+                                ent = ent+data[i*16+j];
+                            }
+                            data[i*16+j]=0;
+                        }
                     };
-                }*/
+                }
+                a_ent=ent/32;
+                document.getElementById('enT').innerHTML=a_ent;
+                ent=0;
+                a_ent=0;
+               /* var T=message.payloadString[10]+message.payloadString[11]+message.payloadString[12]+message.payloadString[13]+message.payloadString[14];
+                document.getElementById('test').innerHTML ="<br/>"+T;
+                document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));*/
+                
             }
             //setTimeout("onMessageArrived(message);", 1000); 
             
