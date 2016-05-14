@@ -42,14 +42,26 @@
         .bedc{
             margin: 1px;
             background-color: #00ffff;
-            width: 15px;
-            height: 15px;
+            width: 40px;
+            height: 20px;
             float: left;
         }
         .beda{
-            width: 273px;
-            height: 69px;    
+            width: 695px;
+            height: 110px;    
             /*background-color: pink;*/
+        }
+        .axisY{
+            margin: 1px;
+            width: 20px;
+            height: 20px;
+            float: left;
+        }
+        .axisX{
+            margin: 1px;
+            width: 40px;
+            height: 20px;
+            float: left;
         }
     </style>
 </head>
@@ -182,7 +194,8 @@
                 for(var i=0;i<64;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     
-                        document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
+                        //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
+                        document.getElementById('b'+parseInt(i+1)) .innerHTML ="<br/>"+T;
                         //document.getElementById('test').innerHTML=T;
                     
                 }
@@ -373,6 +386,7 @@
 </div>
 
 <div id="bed" class="beda">
+            <div id='y0' class='axisY'>0</div>
         <div id="b1" class="bedc"></div>
         <div id="b2" class="bedc"></div>
         <div id="b3" class="bedc"></div>
@@ -389,6 +403,7 @@
         <div id="b14" class="bedc"></div>
         <div id="b15" class="bedc"></div>
         <div id="b16" class="bedc"></div>
+            <div id='y1' class='axisY'>1</div>
         <div id="b17" class="bedc"></div>
         <div id="b18" class="bedc"></div>
         <div id="b19" class="bedc"></div>
@@ -405,6 +420,7 @@
         <div id="b30" class="bedc"></div>
         <div id="b31" class="bedc"></div>
         <div id="b32" class="bedc"></div>
+            <div id='y2' class='axisY'>2</div>
         <div id="b33" class="bedc"></div>
         <div id="b34" class="bedc"></div>
         <div id="b35" class="bedc"></div>
@@ -421,6 +437,7 @@
         <div id="b46" class="bedc"></div>
         <div id="b47" class="bedc"></div>
         <div id="b48" class="bedc"></div>
+            <div id='y3' class='axisY'>3</div>
         <div id="b49" class="bedc"></div>
         <div id="b50" class="bedc"></div>
         <div id="b51" class="bedc"></div>
@@ -437,6 +454,23 @@
         <div id="b62" class="bedc"></div>
         <div id="b63" class="bedc"></div>
         <div id="b64" class="bedc"></div>
+            <div class="axisY"></div>
+            <div class="axisX">0</div>
+            <div class="axisX">1</div>
+            <div class="axisX">2</div>
+            <div class="axisX">3</div>
+            <div class="axisX">4</div>
+            <div class="axisX">5</div>
+            <div class="axisX">6</div>
+            <div class="axisX">7</div>
+            <div class="axisX">8</div>
+            <div class="axisX">9</div>
+            <div class="axisX">10</div>
+            <div class="axisX">11</div>
+            <div class="axisX">12</div>
+            <div class="axisX">13</div>
+            <div class="axisX">14</div>
+            <div class="axisX">15</div>
 
     </div>
 </body>
