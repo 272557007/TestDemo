@@ -210,7 +210,18 @@
                         document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
                         //document.getElementById('test').innerHTML=T;
                     
+                };
+                var ent=0;
+                for(var i=0;i<4;i++){
+                    for(var j=0;j<16;j++){
+                        if(j<4||j>12){
+                            
+                            ent = ent+data[i*16+j];
+                        }
+                    }
                 }
+                var a_ent=ent/32;
+                document.getElementById('enT').innerHTML=a_ent;
                /* var T=message.payloadString[10]+message.payloadString[11]+message.payloadString[12]+message.payloadString[13]+message.payloadString[14];
                 document.getElementById('test').innerHTML ="<br/>"+T;
                 document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));*/
@@ -503,7 +514,8 @@
             <div class="axisX">12</div>
             <div class="axisX">13</div>
             <div class="axisX">14</div>
-            <div class="axisX"><p><span id='count'></span></p></div>
+            <div class="axisX">15</div>
+            <div><p>环境温度：<span id='enT'></span></p></div>
             
     </div>
 </body>
