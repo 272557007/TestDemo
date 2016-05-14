@@ -181,7 +181,8 @@
         for(var i=0;i<64;i++){
             data[i]=0;
         };
-                
+        var ent=0;    
+        var a_ent=0;
         function onMessageArrived(message) {
             if(message.payloadString[3]=='d'){
                     // console.log(message.topic + ': ' +  message.payloadString);
@@ -215,7 +216,7 @@
                         //document.getElementById('test').innerHTML=T;
                     
                 };
-                var ent=0;
+                
                 for(var i=0;i<4;i++){
                     for(var j=0;j<16;j++){
                         if(j<4||j>12){
@@ -224,7 +225,7 @@
                         }
                     }
                 };
-                var a_ent=0;
+                
                 //a_ent=ent/32;
                 document.getElementById('enT').innerHTML=ent;
                /* var T=message.payloadString[10]+message.payloadString[11]+message.payloadString[12]+message.payloadString[13]+message.payloadString[14];
