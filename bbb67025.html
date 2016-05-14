@@ -212,8 +212,8 @@
                 
                 
                 for(var i=0;i<64;i++){
-                    //var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
-                    data[i] = data[i]+ 6;
+                    var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
+                    data[i] = data[i]+ T;
                         //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
                         //document.getElementById('b'+parseInt(i+1)) .innerHTML ="<br/>"+T;
                         //document.getElementById('test').innerHTML=T;
