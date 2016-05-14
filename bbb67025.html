@@ -171,12 +171,12 @@
                 console.log("失去连接:"+responseObject.errorMessage);
         }
         // 消息到达            
-        /*var count = 0;
+        var count = 0;
         var data = new Array();
                        
         for(var i=0;i<64;i++){
             data[i]=0;
-        };*/
+        };
                 
         function onMessageArrived(message) {
             if(message.payloadString[3]=='d'){
