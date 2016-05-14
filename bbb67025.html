@@ -171,7 +171,8 @@
                 console.log("失去连接:"+responseObject.errorMessage);
         }
         // 消息到达            
-
+        var count = 0;
+        var data = new Array();
         function onMessageArrived(message) {
             if(message.payloadString[3]=='d'){
                     // console.log(message.topic + ': ' +  message.payloadString);
@@ -197,7 +198,7 @@
                 //     clearInterval(i);
                 // },1000);
             }else if(message.payloadString[3]=='P'){
-                for(var i=0;i<64;i++){
+                /*for(var i=0;i<64;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     
                         //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
@@ -208,8 +209,26 @@
                /* var T=message.payloadString[10]+message.payloadString[11]+message.payloadString[12]+message.payloadString[13]+message.payloadString[14];
                 document.getElementById('test').innerHTML ="<br/>"+T;
                 document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));*/
+                
+                
+                for(var i=0;i<64;i++){
+                    var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
+                    data[i] += T;
+                        //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
+                        //document.getElementById('b'+parseInt(i+1)) .innerHTML ="<br/>"+T;
+                        //document.getElementById('test').innerHTML=T;
+                    
+                };
+                count++;
+                if(count%4==0){
+                    
+                    for(var i=0;i<64;i++){
+                        data[i]=data[i]/4;
+                        document.getElementById('b'+parseInt(i+1)) .innerHTML =+data[i];
+                    }
+                }
             }
-            setTimeout("onMessageArrived(message);", 1000); 
+            //setTimeout("onMessageArrived(message);", 1000); 
             
         }
         function getC(temp){
