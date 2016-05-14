@@ -40,15 +40,15 @@
             margin-bottom: 2px;
         }
         .bedc{
-            margin: 0.5px;
+            margin: 1px;
             background-color: #00ffff;
             width: 15px;
             height: 15px;
             float: left;
         }
         .beda{
-            width: 256px;
-            height: 64px;    
+            width: 273px;
+            height: 69px;    
             /*background-color: pink;*/
         }
     </style>
@@ -197,7 +197,7 @@
             var cr=0;
             var cg=0;
             var cb=0;
-            if(temp>=5&&temp<12.75){
+            /*if(temp>=5&&temp<12.75){
                 cr=0;
                 cg=((temp-5)/7.75)*255;
                 cb=255;
@@ -218,6 +218,31 @@
                 cg=0;
                 cb=255;
             }else if(temp>=36){
+                cr=255;
+                cg=0;
+                cb=0;
+            }*/
+            if(temp>=0&&temp<25){
+                cr=0;
+                cg=((temp-0)/25)*255;
+                cb=255;
+            }else if(temp>=25&&temp<50){
+                cr=0
+                cg=255;
+                cb=(1-(temp-25)/25)*255;
+            }else if(temp>=50&&temp<75){
+                cr=((temp-50)/25)*255;
+                cg=255;
+                cb=0;
+            }else if(temp>=75&&temp<100){
+                cr=255;
+                cg=(1-(temp-75)/25)*255;
+                cb=0;
+            }else if(temp<0){
+                cr=0;
+                cg=0;
+                cb=255;
+            }else if(temp>=100){
                 cr=255;
                 cg=0;
                 cb=0;
