@@ -211,8 +211,8 @@
                 for(var i=0;i<64;i++){
                     var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
                     data[i]=T;
-                        //document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
-                        document.getElementById('b'+parseInt(i+1)) .innerHTML =data[i];
+                        document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
+                        //document.getElementById('n'+parseInt(i+1)) .innerHTML =data[i];
                         //document.getElementById('test').innerHTML=T;
                     
                 };
@@ -226,9 +226,9 @@
                             
                             data[i*16+j]=data[i*16+j]/1;
                             //data[i]=data[i]/4;
-                            //document.getElementById('b'+parseInt(i*16+j+1)) .innerHTML =data[i*16+j];
+                            document.getElementById('b'+parseInt(i*16+j+1)) .innerHTML =data[i*16+j];
                             //document.getElementById('b'+parseInt(i)) .innerHTML =data[i];
-                           if(j<4||j>12){
+                           if(j<4||j>11){
                                 ent = ent+data[i*16+j];
                             }
                             data[i]=0;
@@ -429,73 +429,73 @@
 
 <div id="bed" class="beda">
             <div id='y0' class='axisY'>0</div>
-        <div id="b1" class="bedc"></div>
-        <div id="b2" class="bedc"></div>
-        <div id="b3" class="bedc"></div>
-        <div id="b4" class="bedc"></div>
-        <div id="b5" class="bedc"></div>
-        <div id="b6" class="bedc"></div>
-        <div id="b7" class="bedc"></div>
-        <div id="b8" class="bedc"></div>
-        <div id="b9" class="bedc"></div>
-        <div id="b10" class="bedc"></div>
-        <div id="b11" class="bedc"></div>
-        <div id="b12" class="bedc"></div>
-        <div id="b13" class="bedc"></div>
-        <div id="b14" class="bedc"></div>
-        <div id="b15" class="bedc"></div>
-        <div id="b16" class="bedc"></div>
+        <div id="b1" class="bedc"><span id="n1"></span></div>
+        <div id="b2" class="bedc"><span id="n2"></span></div>
+        <div id="b3" class="bedc"><span id="n3"></span></div>
+        <div id="b4" class="bedc"><span id="n4"></span></div>
+        <div id="b5" class="bedc"><span id="n5"></span></div>
+        <div id="b6" class="bedc"><span id="n6"></span></div>
+        <div id="b7" class="bedc"><span id="n7"></span></div>
+        <div id="b8" class="bedc"><span id="n8"></span></div>
+        <div id="b9" class="bedc"><span id="n9"></span></div>
+        <div id="b10" class="bedc"><span id="n10"></span></div>
+        <div id="b11" class="bedc"><span id="n11"></span></div>
+        <div id="b12" class="bedc"><span id="n12"></span></div>
+        <div id="b13" class="bedc"><span id="n13"></span></div>
+        <div id="b14" class="bedc"><span id="n14"></span></div>
+        <div id="b15" class="bedc"><span id="n15"></span></div>
+        <div id="b16" class="bedc"><span id="n16"></span></div>
             <div id='y1' class='axisY'>1</div>
-        <div id="b17" class="bedc"></div>
-        <div id="b18" class="bedc"></div>
-        <div id="b19" class="bedc"></div>
-        <div id="b20" class="bedc"></div>
-        <div id="b21" class="bedc"></div>
-        <div id="b22" class="bedc"></div>
-        <div id="b23" class="bedc"></div>
-        <div id="b24" class="bedc"></div>
-        <div id="b25" class="bedc"></div>
-        <div id="b26" class="bedc"></div>
-        <div id="b27" class="bedc"></div>
-        <div id="b28" class="bedc"></div>
-        <div id="b29" class="bedc"></div>
-        <div id="b30" class="bedc"></div>
-        <div id="b31" class="bedc"></div>
-        <div id="b32" class="bedc"></div>
+        <div id="b17" class="bedc"><span id="n17"></span></div>
+        <div id="b18" class="bedc"><span id="n18"></span></div>
+        <div id="b19" class="bedc"><span id="n19"></span></div>
+        <div id="b20" class="bedc"><span id="n20"></span></div>
+        <div id="b21" class="bedc"><span id="n21"></span></div>
+        <div id="b22" class="bedc"><span id="n22"></span></div>
+        <div id="b23" class="bedc"><span id="n23"></span></div>
+        <div id="b24" class="bedc"><span id="n24"></span></div>
+        <div id="b25" class="bedc"><span id="n25"></span></div>
+        <div id="b26" class="bedc"><span id="n26"></span></div>
+        <div id="b27" class="bedc"><span id="n27"></span></div>
+        <div id="b28" class="bedc"><span id="n28"></span></div>
+        <div id="b29" class="bedc"><span id="n29"></span></div>
+        <div id="b30" class="bedc"><span id="n30"></span></div>
+        <div id="b31" class="bedc"><span id="n31"></span></div>
+        <div id="b32" class="bedc"><span id="n32"></span></div>
             <div id='y2' class='axisY'>2</div>
-        <div id="b33" class="bedc"></div>
-        <div id="b34" class="bedc"></div>
-        <div id="b35" class="bedc"></div>
-        <div id="b36" class="bedc"></div>
-        <div id="b37" class="bedc"></div>
-        <div id="b38" class="bedc"></div>
-        <div id="b39" class="bedc"></div>
-        <div id="b40" class="bedc"></div>
-        <div id="b41" class="bedc"></div>
-        <div id="b42" class="bedc"></div>
-        <div id="b43" class="bedc"></div>
-        <div id="b44" class="bedc"></div>
-        <div id="b45" class="bedc"></div>
-        <div id="b46" class="bedc"></div>
-        <div id="b47" class="bedc"></div>
-        <div id="b48" class="bedc"></div>
+        <div id="b33" class="bedc"><span id="n33"></span></div>
+        <div id="b34" class="bedc"><span id="n34"></span></div>
+        <div id="b35" class="bedc"><span id="n35"></span></div>
+        <div id="b36" class="bedc"><span id="n36"></span></div>
+        <div id="b37" class="bedc"><span id="n37"></span></div>
+        <div id="b38" class="bedc"><span id="n38"></span></div>
+        <div id="b39" class="bedc"><span id="n39"></span></div>
+        <div id="b40" class="bedc"><span id="n40"></span></div>
+        <div id="b41" class="bedc"><span id="n41"></span></div>
+        <div id="b42" class="bedc"><span id="n42"></span></div>
+        <div id="b43" class="bedc"><span id="n43"></span></div>
+        <div id="b44" class="bedc"><span id="n44"></span></div>
+        <div id="b45" class="bedc"><span id="n45"></span></div>
+        <div id="b46" class="bedc"><span id="n46"></span></div>
+        <div id="b47" class="bedc"><span id="n47"></span></div>
+        <div id="b48" class="bedc"><span id="n48"></span></div>
             <div id='y3' class='axisY'>3</div>
-        <div id="b49" class="bedc"></div>
-        <div id="b50" class="bedc"></div>
-        <div id="b51" class="bedc"></div>
-        <div id="b52" class="bedc"></div>
-        <div id="b53" class="bedc"></div>
-        <div id="b54" class="bedc"></div>
-        <div id="b55" class="bedc"></div>
-        <div id="b56" class="bedc"></div>
-        <div id="b57" class="bedc"></div>
-        <div id="b58" class="bedc"></div>
-        <div id="b59" class="bedc"></div>
-        <div id="b60" class="bedc"></div>
-        <div id="b61" class="bedc"></div>
-        <div id="b62" class="bedc"></div>
-        <div id="b63" class="bedc"></div>
-        <div id="b64" class="bedc"></div>
+        <div id="b49" class="bedc"><span id="n49"></span></div>
+        <div id="b50" class="bedc"><span id="n50"></span></div>
+        <div id="b51" class="bedc"><span id="n51"></span></div>
+        <div id="b52" class="bedc"><span id="n52"></span></div>
+        <div id="b53" class="bedc"><span id="n53"></span></div>
+        <div id="b54" class="bedc"><span id="n54"></span></div>
+        <div id="b55" class="bedc"><span id="n55"></span></div>
+        <div id="b56" class="bedc"><span id="n56"></span></div>
+        <div id="b57" class="bedc"><span id="n57"></span></div>
+        <div id="b58" class="bedc"><span id="n58"></span></div>
+        <div id="b59" class="bedc"><span id="n59"></span></div>
+        <div id="b60" class="bedc"><span id="n60"></span></div>
+        <div id="b61" class="bedc"><span id="n61"></span></div>
+        <div id="b62" class="bedc"><span id="n62"></span></div>
+        <div id="b63" class="bedc"><span id="n63"></span></div>
+        <div id="b64" class="bedc"><span id="n64"></span></div>
             <div class="axisY"></div>
             <div class="axisX">0</div>
             <div class="axisX">1</div>
