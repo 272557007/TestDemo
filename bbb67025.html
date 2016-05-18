@@ -187,7 +187,7 @@
         };
         var ent=0;    
         var a_ent=0;
-        var myDate = new Date();
+        
         function onMessageArrived(message) {
             if(message.payloadString[3]=='d'){
                     // console.log(message.topic + ': ' +  message.payloadString);
@@ -222,6 +222,8 @@
                         //document.getElementById('test').innerHTML=T;
                     
                 };
+                
+                var myDate = new Date();
                 writeFile('weil.nat123.net//wx//test1.txt', myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()+'                                                  ***************************');
                 
                
