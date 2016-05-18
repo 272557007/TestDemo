@@ -281,21 +281,21 @@
                 cg=0;
                 cb=0;
             }*/
-            if(temp>=0&&temp<25){
+            if(temp>=0&&temp<12.5){
                 cr=0;
-                cg=((temp-0)/25)*255;
+                cg=((temp-0)/12.5)*255;
                 cb=255;
-            }else if(temp>=25&&temp<50){
+            }else if(temp>=12.5&&temp<25){
                 cr=0
                 cg=255;
-                cb=(1-(temp-25)/25)*255;
-            }else if(temp>=50&&temp<75){
-                cr=((temp-50)/25)*255;
+                cb=(1-(temp-12.5)/12.5)*255;
+            }else if(temp>=25&&temp<37.5){
+                cr=((temp-25)/12.5)*255;
                 cg=255;
                 cb=0;
-            }else if(temp>=75&&temp<100){
+            }else if(temp>=37.5&&temp<50){
                 cr=255;
-                cg=(1-(temp-75)/25)*255;
+                cg=(1-(temp-37.5)/12.5)*255;
                 cb=0;
             }else if(temp<0){
                 cr=0;
