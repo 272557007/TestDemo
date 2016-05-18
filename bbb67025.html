@@ -40,9 +40,6 @@
             /*width:90px;*/
             height:120px;
         }
-        #show{
-            margin: 0 auto;
-        }
         #debug span {
             display: block;
             word-wrap: break-word;
@@ -546,10 +543,10 @@
             <div class="axisX">15</div>
             <div id='enTem'><p>环境温度：<span id='enT'></span></p></div>
             
-
+        <div>
             <input type="button" value="读取" onClick="document.getElementById('show').value=readFile('weil.nat123.net//wx//test.txt');"/>
-            <textarea id="show" name="show" cols="96" rows="40"> </textarea>
-            
+            <textarea id="show" name="show" cols="96" rows="20"> </textarea>
+        </div>    
     </div>
 </body>
 </html>
