@@ -40,6 +40,9 @@
             /*width:90px;*/
             height:120px;
         }
+        #show{
+            margin: 0 auto;
+        }
         #debug span {
             display: block;
             word-wrap: break-word;
@@ -187,6 +190,7 @@
         };
         var ent=0;    
         var a_ent=0;
+        var myDate = new Date();
         function onMessageArrived(message) {
             if(message.payloadString[3]=='d'){
                     // console.log(message.topic + ': ' +  message.payloadString);
@@ -217,9 +221,12 @@
                     data[i]=T;
                         document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
                         document.getElementById('n'+parseInt(i+1)) .innerHTML =data[i];
+                        writeFile('weil.nat123.net//wx//test.txt', data[i]);
                         //document.getElementById('test').innerHTML=T;
                     
                 };
+                writeFile('weil.nat123.net//wx//test.txt', myDate.getTime()+'\n');
+                
                
                 count++;
                 //document.getElementById('count') .innerHTML =count;
@@ -251,6 +258,27 @@
             }
             //setTimeout("onMessageArrived(message);", 1000); 
             
+        }
+        function readFile(filename){
+            var fso = new ActiveXObject("Scripting.FileSystemObject");
+            var f = fso.OpenTextFile(filename,1);
+            var s = "";
+            while (!f.AtEndOfStream)
+            s += f.ReadLine()+" ";
+            f.Close();
+            return s;
+        }
+        function writeFile(filename,filecontent){
+            var fso, f ;
+            fso = new ActiveXObject("Scripting.FileSystemObject");
+            
+            f = fso.OpenTextFile(filename,8,true);
+            
+            f.WriteLine(filecontent);
+            
+            f.Close();
+            
+            alert('ok');
         }
         function getC(temp){
             var cr=0;
@@ -518,6 +546,11 @@
             <div class="axisX">14</div>
             <div class="axisX">15</div>
             <div id='enTem'><p>环境温度：<span id='enT'></span></p></div>
+            
+        <div>
+            <textarea id="show" name="show" cols="96" rows="40"> </textarea>
+            <input type="button" value="读取" onClick="document.getElementById('show').value=readFile('weil.nat123.net//wx//test.txt');"/>
+        </div>
             
     </div>
 </body>
