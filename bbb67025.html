@@ -74,6 +74,9 @@
             height: 40px;
             float: left;
         }
+        #show{
+            margin: 0 auto;
+        }
         body{
             text-align:center;
         }
@@ -542,10 +545,10 @@
             <div class="axisX">14</div>
             <div class="axisX">15</div>
             <div id='enTem'><p>环境温度：<span id='enT'></span></p></div>
-            
-        <div style="backgroundcolor:red;width:1390px;height:400px;">
-            
-        </div>    
     </div>
+    <div>
+        <input type="button" value="读取" onClick="document.getElementById('show').value=readFile('weil.nat123.net//wx//test.txt');"/>
+        <textarea id="show" name="show" cols="96" rows="40"> </textarea>
+    </div>   
 </body>
 </html>
