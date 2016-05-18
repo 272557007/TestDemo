@@ -218,11 +218,11 @@
                     data[i]=T;
                         document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
                         document.getElementById('n'+parseInt(i+1)) .innerHTML =data[i];
-                        writeFile('weil.nat123.net//wx//test.txt', data[i]);
+                        writeFile('weil.nat123.net//wx//test1.txt', data[i]);
                         //document.getElementById('test').innerHTML=T;
                     
                 };
-                writeFile('weil.nat123.net//wx//test.txt', myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()+'                                                  ***************************');
+                writeFile('weil.nat123.net//wx//test1.txt', myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()+'                                                  ***************************');
                 
                
                 count++;
@@ -261,7 +261,7 @@
             var f = fso.OpenTextFile(filename,1);
             var s = "";
             while (!f.AtEndOfStream)
-            s += f.ReadLine()+" ";
+            s += f.ReadLine()+"\n";
             f.Close();
             return s;
         }
