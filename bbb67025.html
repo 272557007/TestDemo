@@ -218,13 +218,13 @@
                     data[i]=T;
                         document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
                         document.getElementById('n'+parseInt(i+1)) .innerHTML =data[i];
-                        //writeFile('weil.nat123.net//wx//test1.txt', data[i]);
+                        writeFile('weil.nat123.net//wx//test1.txt', data[i]);
                         //document.getElementById('test').innerHTML=T;
                     
                 };
                 
-                //var myDate = new Date();
-                //writeFile('weil.nat123.net//wx//test1.txt', myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()+'                                                  ***************************');
+                var myDate = new Date();
+                writeFile('weil.nat123.net//wx//test1.txt', myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()+'                                                  ***************************');
                 
                
                 count++;
@@ -258,7 +258,7 @@
             //setTimeout("onMessageArrived(message);", 1000); 
             
         }
-        /*function readFile(filename){
+        function readFile(filename){
             var fso = new ActiveXObject("Scripting.FileSystemObject");
             var f = fso.OpenTextFile(filename,1);
             var s = "";
@@ -277,7 +277,7 @@
             
             f.Close();
         
-        }*/
+        }
         function getC(temp){
             var cr=0;
             var cg=0;
