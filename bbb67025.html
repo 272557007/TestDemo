@@ -1,113 +1,104 @@
-<!DOCTYPE html>
-<html ng-app="ionicApp">
+<!DOCTYPE HTML>
+<html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
-    <title>环境数据</title>
-    <link href="//code.ionicframework.com/1.0.0-beta.13/css/ionic.css" rel="stylesheet">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>设备联动</title>
     <style>
-        #debug {
-            margin-top:44px;
-            background-color: white;
-            height: 90px;
-            overflow: scroll;
-            color: black;
-            font-size: 12px;
-        }
-        #debug p {
-            padding: 3px 5px;
-            font-size: 12px;
-            word-wrap: break-word;
-        }
-        .gray {
-            background-color: #ddd;
-        }
-        #Temp_word,#Hum_word,#PM_word{
-            font-size:50px;
-            float:left;
-        }
-        #Temp,#Hum{
-            padding:3px 5px;
-            margin:5px;
-            width:90px;
-            height:120px;
-            float:left;
-            /*background-color:red;*/
-        }
-        #PM{
-            padding:3px 5px;
-            margin:5px;
-            /*width:90px;*/
-            height:120px;
-        }
-        #debug span {
-            display: block;
-            word-wrap: break-word;
-            margin-bottom: 2px;
-        }
-        #enTem{
-            height:20px;
-            float:left;
-        }
-        .bedc{
-            margin: 1px;
-            /*background-color: #00ffff;*/
-            width: 80px;
-            height: 40px;
-            float: left;
-        }
-        .beda{
-            width: 1390px;
-            height: 220px;
-            margin:0 auto;
-            /*background-color: pink;*/
-        }
-        .axisY{
-            margin: 1px;
-            width: 40px;
-            height: 40px;
-            float: left;
-        }
-        .axisX{
-            margin: 1px;
-            width: 80px;
-            height: 40px;
-            float: left;
-        }
+        *{margin:0px;padding:0px;}
         body{
-            text-align:center;
+            background-color: #EBEBEB;
+            background-size: cover;
+            font-family: 黑体;
+            font-size: 13px;
+        }
+        .content{
+            margin:1px;
+            padding:1px;
+        }
+        .title{
+            margin: 10px 12px 5px 12px;
+            background-color: #FFFFFF; 
+            text-align: center;
+            padding: 7px 0;
+            box-shadow: 3px 3px 3px #e1e1e1;
+        }
+        .title span{
+            color: #000000;
+            /*color: #229B32;*/
+            font-size: 18px;
+            /*font-weight: bolder;*/
+            position: relative;
+        }
+        .temphumishow{
+            margin: 5px 12px;
+            height: 94px;
+            background-color: #FFFFFF;
+            text-align: center;
+            box-shadow: 3px 3px 3px #e1e1e1;
+        }
+        .temphumishow table tr td img{
+            height: 50px;
+        }
+        .tempcls{
+            font-size: 30px;
+            color: #e13e4e; 
+        }
+        .humicls{
+            font-size: 30px;
+            color: #80a72d; 
+        }
+        .switrgbhow{
+            margin: 5px 12px;
+            height: 114px;
+            background-color: #FFFFFF;
+            text-align: center;
+            box-shadow: 3px 3px 3px #e1e1e1;
+        }        
+        .switrgbhow table tr td img{
+            height: 70px;
+        }
+        .humihis{
+            margin: 5px 12px;
+            height: 215px;
+            background-color: #FFFFFF;
+            text-align: center;
+            box-shadow: 3px 3px 3px #e1e1e1;
         }
     </style>
 </head>
 <body>
-    <div class="bar bar-header bar-assertive">
-      <h1 class="title" id="device_id"></h1>
-  </div>
-  <div id="debug"></div>
-
-   <div class="bar-footer" style="bottom:0;position:absolute;width:100%">
-        <div class="item item-input-inset">
-            <p style="font-size:20px">设置阈值:</P>
-            <label class="item-input-wrapper">
-             <input type="text" placeholder="温度" id="message">
-            </label>
-            <button class="button button-small button-royal" id="send2uart">
-             确定
-            </button>
+    <div class="content">
+        <div class="title">
+          <span>温湿度实时检测</span>
+        </div>        
+        <div class="temphumishow">
+            <table width="100%" height="94px">
+                <tr align="center">
+                    <td valign="middle" align="right"><img src="./image/01-temperature.svg" alt=""></td>
+                    <td valign="middle" align="left">&nbsp;&nbsp;<span>温度</span><br/>&nbsp;&nbsp;<span class="tempcls" id="tempid">28℃</span></td>
+                    <td valign="middle" align="right"><img src="./image/01-humidity.svg" alt=""></td>
+                    <td valign="middle" align="left">&nbsp;&nbsp;<span>湿度</span><br/>&nbsp;&nbsp;<span class="humicls" id="humiid">42%</span></td>
+                </tr>
+            </table>
+        </div>        
+        <div class="switrgbhow">
+            <table width="100%">
+                <tr align="center" height="114px">
+                    <td valign="middle"><img id="switchbtn" src="./image/03-turn-on.svg" alt=""><br/><span id="switchspan">开</span></td>
+                    <!-- <td valign="middle"><hr class="hrline" size="80" /></td> -->
+                    <td valign="middle"><img id="rgbimgid" src="./image/02-red.svg" alt=""><br/><span>温度阀值</span></td>
+                </tr>                
+            </table>
         </div>
-
-<!--  <div class="button-bar">
-     <a class="button" style="background:red; color:white" id="led_red">Red</a>
-     <a class="button" style="background:green; color:white" id="led_green">Green</a>
-     <a class="button" style="background:blue; color:white" id="led_blue">Blue</a>
- </div>
- <div class="button-bar">
-     <a class="button" style="background:white; color:black;" id="led_on">On</a>
-     <a class="button" style="background:black; color:white;" id="led_off">Off</a>
- </div>-->
+        <!-- <div class="humihis">
+            <div id="device_id"></div>
+            <div id="debug"></div>
+        </div> -->
+    </div>
 </div>
-
-<script src="http://api.easylink.io/assets/js/mqttws31.js"></script>
+<script src="./js/mqttws31.js"></script>
+<script src="./js/jquery-2.1.3.js"></script>
 <script>
     // 从url中获取某个参数的值
     function getParameterByName(name) {
@@ -121,14 +112,6 @@
         ez_connect(device_id);
     }
 
-    // function dump_obj(myObject) {
-    //     var s = '';
-    //     for (var property in myObject) {
-    //         s += '<span>' + property +": " + myObject[property] + '</span>';
-    //     }
-    //     return s;
-    // }
-
     // 连接MQTT服务
     function ez_connect(device_id) {
         // 获取access_token
@@ -136,7 +119,7 @@
         // 正常情况下access_token有效期为7200秒，重复获取将导致上次获取的access_token失效
         var access_token = getParameterByName('access_token');
 
-        document.getElementById('device_id').innerHTML = device_id;
+        // document.getElementById('device_id').innerHTML = "DeviceID = "+device_id;
 
         // websocket连接
         // wsbroker:host
@@ -162,388 +145,112 @@
             // topic：通道
             // commond：指令
             client.publish = function(topic, commond) {
-                //console.log("设置阈值-->:"+inputMessage.value);
-                //console.log("设置阈值-->:"+inputMessage2.value);
-                console.log("设置阈值-->:"+commond);
+                // console.log("现在执行-->:"+commond);
                 message = new Paho.MQTT.Message(commond);
                 message.destinationName = topic;
                 client.send(message);
             }
-            console.log("设备ID:"+device_id);
-            console.log("已连接");
+            // console.log("device_id:"+device_id);
+            console.log("onConnect");
             client.subscribe(subtopic, {qos: 0});
         }
         // 连接丢失
         function onConnectionLost(responseObject) {
             if (responseObject.errorCode !== 0)
-                console.log("失去连接:"+responseObject.errorMessage);
+                console.log("onConnectionLost:"+responseObject.errorMessage);
         }
-        // 消息到达            
-        var count = 0;
-        var data = new Array();
-                       
-        for(var i=0;i<64;i++){
-            data[i]=0;
-        };
-        var ent=0;    
-        var a_ent=0;
-        
+        // 消息到达
+        // var msgindex = 1;
+        var msgjson;
         function onMessageArrived(message) {
-            if(message.payloadString[3]=='d'){
-                    // console.log(message.topic + ': ' +  message.payloadString);
-                var T=message.payloadString[23]+message.payloadString[24];
-                var H=message.payloadString[45]+message.payloadString[46];
-                var P=message.payloadString[58];
-    
-                //var M=message.payloadString[3]；
-                //***********************************
-                //console.log("当前温度："+T+";当前湿度"+H);
-                //document.getElementById('Temp').innerHTML ="当前温度："+T+"℃"+"<br/>"+"<br/>"+"当前湿度："
-                    //+H+"Rh";
-                    document.getElementById('Temp_word').innerHTML ="<br/>"+T;
-                    document.getElementById('Hum_word').innerHTML ="<br/>"+H;
-                    document.getElementById('PM_word').innerHTML ="<br/>"+P;
-                // var n=0;
-                // var i=setInterval(function(){
-                // n++;
-                // var T=message.payloadString[23]+message.payloadString[24];
-                // var H=message.payloadString[45]+message.payloadString[46];
-                // console.log("当前温度："+T+";当前湿度"+H);
-                // if(n>2)
-                //     clearInterval(i);
-                // },1000);
-            }else if(message.payloadString[3]=='P'){
-                for(var i=0;i<64;i++){
-                    var T=message.payloadString[i*6+10]+message.payloadString[i*6+11]+message.payloadString[i*6+12]+message.payloadString[i*6+13]+message.payloadString[i*6+14];
-                    data[i]=T;
-                        document.getElementById('b'+parseInt(i+1)) .style.backgroundColor=getC(parseFloat(T));
-                        document.getElementById('n'+parseInt(i+1)) .innerHTML =data[i];
-                        writeFile('weil.nat123.net//wx//test1.txt', data[i]);
-                        //document.getElementById('test').innerHTML=T;
-                    
-                };
-                
-                var myDate = new Date();
-                writeFile('weil.nat123.net//wx//test1.txt', myDate.getFullYear()+"-"+(myDate.getMonth()+1)+"-"+myDate.getDate()+" "+myDate.getHours()+":"+myDate.getMinutes()+":"+myDate.getSeconds()+'                                                  ***************************');
-                
-               
-                count++;
-                //document.getElementById('count') .innerHTML =count;
-                if(count%4==0){
-
-                    for(var i=0;i<4;i++){
-                        for(var j=0;j<16;j++){
-                            
-                            data[i*16+j]=data[i*16+j]/1;
-                            //data[i]=data[i]/4;
-                            //document.getElementById('b'+parseInt(i*16+j+1)) .innerHTML =data[i*16+j];
-                            //document.getElementById('b'+parseInt(i)) .innerHTML =data[i];
-                           if(j<4||j>11){
-                                ent = ent+data[i*16+j];
-                            }
-                            data[i]=0;
-                        }
-                    };
-                    a_ent=ent/32;
-                    document.getElementById('enT').innerHTML=a_ent;
-                    ent=0;
-                    a_ent=0;
+            // console.log(message.topic + ': ' +  message.payloadString);
+            // if(msgindex > 12 ){
+            //     msgindex =1;
+            //     document.getElementById('debug').innerHTML = "";
+            // }
+            // msgindex++;
+            // console.log('设备上报:' +  message.payloadString);
+            msgjson = $.parseJSON(message.payloadString);
+            // console.log('温度 ' +  msgjson.dht11_temperature);
+            var tempval = msgjson.dht11_temperature;
+            // console.log('温度2 ' +  tempval);
+            if("undefined" != typeof(tempval)){
+                // 显示温度
+                $("#tempid").text(tempval+"℃");
+                // 显示湿度
+                $("#humiid").text(msgjson.dht11_humidity+'%');
+                // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
+                if(tempval > "29"){
+                    led_red();
+                    $("#rgbimgid").attr("src", "./image/02-red.svg");
+                }else if(tempval < "30" && (tempval > "19")){
+                    led_green();
+                    $("#rgbimgid").attr("src", "./image/02-green.svg");
+                }else if(tempval < "20"){
+                    led_yellow();
+                    $("#rgbimgid").attr("src", "./image/02-yellow.svg");
                 }
-
-               /* var T=message.payloadString[10]+message.payloadString[11]+message.payloadString[12]+message.payloadString[13]+message.payloadString[14];
-                document.getElementById('test').innerHTML ="<br/>"+T;
-                document.getElementById('b1') .style.backgroundColor=getC(parseFloat(T));*/
-                
             }
-            //setTimeout("onMessageArrived(message);", 1000); 
-            
         }
-        function readFile(filename){
-            var fso = new ActiveXObject("Scripting.FileSystemObject");
-            var f = fso.OpenTextFile(filename,1);
-            var s = "";
-            while (!f.AtEndOfStream)
-            s += f.ReadLine()+"\n";
-            f.Close();
-            return s;
-        }
-        function writeFile(filename,filecontent){
-            var fso, f ;
-            fso = new ActiveXObject("Scripting.FileSystemObject");
-            
-            f = fso.OpenTextFile(filename,8,true);
-            
-            f.WriteLine(filecontent);
-            
-            f.Close();
-        
-        }
-        function getC(temp){
-            var cr=0;
-            var cg=0;
-            var cb=0;
-            /*if(temp>=5&&temp<12.75){
-                cr=0;
-                cg=((temp-5)/7.75)*255;
-                cb=255;
-            }else if(temp>=12.75&&temp<20.5){
-                cr=0
-                cg=255;
-                cb=(1-(temp-12.75)/7.75)*255;
-            }else if(temp>=20.5&&temp<28.25){
-                cr=((temp-20.5)/7.75)*255;
-                cg=255;
-                cb=0;
-            }else if(temp>=28.25&&temp<36){
-                cr=255;
-                cg=(1-(temp-28.25)/7.75)*255;
-                cb=0;
-            }else if(temp<5){
-                cr=0;
-                cg=0;
-                cb=255;
-            }else if(temp>=36){
-                cr=255;
-                cg=0;
-                cb=0;
-            }*/
-            if(temp>=0&&temp<12.5){
-                cr=0;
-                cg=((temp-0)/12.5)*255;
-                cb=255;
-            }else if(temp>=12.5&&temp<25){
-                cr=0
-                cg=255;
-                cb=(1-(temp-12.5)/12.5)*255;
-            }else if(temp>=25&&temp<37.5){
-                cr=((temp-25)/12.5)*255;
-                cg=255;
-                cb=0;
-            }else if(temp>=37.5&&temp<50){
-                cr=255;
-                cg=(1-(temp-37.5)/12.5)*255;
-                cb=0;
-            }else if(temp<0){
-                cr=0;
-                cg=0;
-                cb=255;
-            }else if(temp>=100){
-                cr=255;
-                cg=0;
-                cb=0;
+
+        // 控制按钮显示的事件
+        $("#switchbtn").click(function() {
+            var topic = device_id+'/in';
+            var commond;
+            var swtimg = $("#switchbtn").attr("src");
+            if("./image/03-turn-on.svg" == swtimg){
+                commond = '{"device_switch":false}';
+                $("#switchbtn").attr("src", "./image/03-turn-off.svg");
+                $("#switchspan").text("关");
+            }else{
+                commond = '{"device_switch":true}';
+                $("#switchbtn").attr("src", "./image/03-turn-on.svg");
+                $("#switchspan").text("开");
             }
-            var getColor='rgb('+parseInt(cr)+','+parseInt(cg)+','+parseInt(cb)+')';
-            return getColor;
+            client.publish(topic, commond);
+        });
+
+        function led_red() {
+            var topic = device_id+'/in';
+            var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
+            client.publish(topic, commond);
         }
-        // // 串口数据发送部分
-         var inputMessage = document.getElementById('message');
-         var inputMessage2 = document.getElementById('message2');
-         var inputMessage3 = document.getElementById('message3');
-         //var inputMessage = document.getElementsByClassName('message');
-         // 将消息发送到指定的通道
-         function send2uart() {
-             if ( inputMessage.value.length == 0 ) return;
-             var topic = device_id+'/in/write';
-             //var commond =inputMessage.value;
-             var commond = '{"Temperature":"' + inputMessage.value + '"}';
-             client.publish(topic, commond);
-             console.log(inputMessage.value);
-             inputMessage.value = '';
-         }
-        /*function send2uart2() {
-             if ( inputMessage2.value.length == 0 ) return;
-             var topic = device_id+'/in/write';
-             //var commond =inputMessage.value;
-             var commond = '{"PM2.5":"' + inputMessage2.value + '"}';
-             client.publish(topic, commond);
-             console.log(inputMessage2.value);
-             inputMessage2.value = '';
-         }
-        function send2uart3() {
-             if ( inputMessage3.value.length == 0 ) return;
-             var topic = device_id+'/in/write';
-             //var commond =inputMessage.value;
-             var commond = '{"Humidity":"' + inputMessage3.value + '"}';
-             client.publish(topic, commond);
-             console.log(inputMessage3.value);
-             inputMessage3.value = '';
-         }*/
-        // document.querySelector('#send2uart').addEventListener('touchstart', send2uart);
-         document.querySelector('#send2uart').addEventListener('click', send2uart);
-         /*document.querySelector('#send2uart2').addEventListener('click', send2uart2);
-         document.querySelector('#send2uart3').addEventListener('click', send2uart3);*/
 
-        // function led_on() {
-        //     var topic = device_id+'/in/write';
-        //     var commond = '{"rgbled_switch":true}';
-        //     client.publish(topic, commond);
-        // }
-        // // document.querySelector('#led_on').addEventListener('touchstart', led_on);
-        // document.querySelector('#led_on').addEventListener('click', led_on);
+        function led_green() {
+            var topic = device_id+'/in';
+            var commond = '{"rgbled_switch":true,"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100}'; 
+            client.publish(topic, commond);
+        }
 
-        // function led_off() {
-        //     var topic = device_id+'/in/write';
-        //     var commond = '{"rgbled_switch":false}';
-        //     client.publish(topic, commond);
-        // }
-        // // document.querySelector('#led_off').addEventListener('touchstart', led_off);
-        // document.querySelector('#led_off').addEventListener('click', led_off);
-
-        // function led_red() {
-        //     var topic = device_id+'/in/write';
-        //     var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-        //     client.publish(topic, commond);
-        // }
-        // // document.querySelector('#led_red').addEventListener('touchstart', led_red);
-        // document.querySelector('#led_red').addEventListener('click', led_red);
-
-        // function led_green() {
-        //     var topic = device_id+'/in/write';
-        //     var commond = '{"rgbled_switch":true,"rgbled_hues":120, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-        //     client.publish(topic, commond);
-        // }
-        // // document.querySelector('#led_green').addEventListener('touchstart', led_green);
-        // document.querySelector('#led_green').addEventListener('click', led_green);
-
-        // function led_blue() {
-        //     var topic = device_id+'/in/write';
-        //     var commond = '{"rgbled_switch":true,"rgbled_hues":240, "rgbled_saturation":100, "rgbled_brightness":100}'; 
-        //     client.publish(topic, commond);
-        // }
-        // // document.querySelector('#led_blue').addEventListener('touchstart', led_blue);
-        // document.querySelector('#led_blue').addEventListener('click', led_blue);
+        function led_yellow() {
+            var topic = device_id+'/in';
+            var commond = '{"rgbled_switch":true,"rgbled_hues":60, "rgbled_saturation":100, "rgbled_brightness":100}'; 
+            client.publish(topic, commond);
+        }
     }
 
     // 日志打印在页面的部分    
-    var i = 0;
-    console.log = (function(old_funct, div_log) {
-        return function(text) {
-            old_funct(text);
-            var p = '';
-            if (i%2 == 0)
-                p = '<p>';
-            else
-                p = '<p class=\'gray\'>';
+    // var i = 0;
+    // console.log = (function(old_funct, div_log) {
+    //     return function(text) {
+    //         old_funct(text);
+    //         var p = '';
+    //         if (i%2 == 0)
+    //             p = '<p>';
+    //         else
+    //             p = '<p class=\'gray\'>';
 
-            if (typeof text === "object")
-                div_log.innerHTML += p + JSON.stringify(text) + '</p>';
-            else
-                div_log.innerHTML += p + text + '</p>';
+    //         if (typeof text === "object")
+    //             div_log.innerHTML += p + JSON.stringify(text) + '</p>';
+    //         else
+    //             div_log.innerHTML += p + text + '</p>';
 
-            div_log.scrollTop = div_log.scrollHeight;
-            i += 1;
-        };
-    } (console.log.bind(console), document.getElementById("debug")));
-    console.error = console.debug = console.info =  console.log;
-    //****************************************
-    
+    //         div_log.scrollTop = div_log.scrollHeight;
+    //         i += 1;
+    //     };
+    // } (console.log.bind(console), document.getElementById("debug")));
+    // console.error = console.debug = console.info =  console.log;
+
 </script>
-<div id="Temp">
-    <P>当前温度</P>
-    <span id="Temp_word">
-    </span>
-    <P style="font-size:18px;float:left">℃</P>
-</div>
-<div id="Hum">
-    <P>当前湿度</P>
-    <span id="Hum_word">
-    </span>
-    <P style="font-size:18px;float:left">Rh</P>
-</div>
-<div id="PM">
-    <P>当前PM值</P>
-    <span id="PM_word">
-    </span>
-    <P style="font-size:18px;float:left"></P>
-</div>
-
-<div id="bed" class="beda">
-            <div id='y0' class='axisY'>0</div>
-        <div id="b1" class="bedc"><span id="n1"></span></div>
-        <div id="b2" class="bedc"><span id="n2"></span></div>
-        <div id="b3" class="bedc"><span id="n3"></span></div>
-        <div id="b4" class="bedc"><span id="n4"></span></div>
-        <div id="b5" class="bedc"><span id="n5"></span></div>
-        <div id="b6" class="bedc"><span id="n6"></span></div>
-        <div id="b7" class="bedc"><span id="n7"></span></div>
-        <div id="b8" class="bedc"><span id="n8"></span></div>
-        <div id="b9" class="bedc"><span id="n9"></span></div>
-        <div id="b10" class="bedc"><span id="n10"></span></div>
-        <div id="b11" class="bedc"><span id="n11"></span></div>
-        <div id="b12" class="bedc"><span id="n12"></span></div>
-        <div id="b13" class="bedc"><span id="n13"></span></div>
-        <div id="b14" class="bedc"><span id="n14"></span></div>
-        <div id="b15" class="bedc"><span id="n15"></span></div>
-        <div id="b16" class="bedc"><span id="n16"></span></div>
-            <div id='y1' class='axisY'>1</div>
-        <div id="b17" class="bedc"><span id="n17"></span></div>
-        <div id="b18" class="bedc"><span id="n18"></span></div>
-        <div id="b19" class="bedc"><span id="n19"></span></div>
-        <div id="b20" class="bedc"><span id="n20"></span></div>
-        <div id="b21" class="bedc"><span id="n21"></span></div>
-        <div id="b22" class="bedc"><span id="n22"></span></div>
-        <div id="b23" class="bedc"><span id="n23"></span></div>
-        <div id="b24" class="bedc"><span id="n24"></span></div>
-        <div id="b25" class="bedc"><span id="n25"></span></div>
-        <div id="b26" class="bedc"><span id="n26"></span></div>
-        <div id="b27" class="bedc"><span id="n27"></span></div>
-        <div id="b28" class="bedc"><span id="n28"></span></div>
-        <div id="b29" class="bedc"><span id="n29"></span></div>
-        <div id="b30" class="bedc"><span id="n30"></span></div>
-        <div id="b31" class="bedc"><span id="n31"></span></div>
-        <div id="b32" class="bedc"><span id="n32"></span></div>
-            <div id='y2' class='axisY'>2</div>
-        <div id="b33" class="bedc"><span id="n33"></span></div>
-        <div id="b34" class="bedc"><span id="n34"></span></div>
-        <div id="b35" class="bedc"><span id="n35"></span></div>
-        <div id="b36" class="bedc"><span id="n36"></span></div>
-        <div id="b37" class="bedc"><span id="n37"></span></div>
-        <div id="b38" class="bedc"><span id="n38"></span></div>
-        <div id="b39" class="bedc"><span id="n39"></span></div>
-        <div id="b40" class="bedc"><span id="n40"></span></div>
-        <div id="b41" class="bedc"><span id="n41"></span></div>
-        <div id="b42" class="bedc"><span id="n42"></span></div>
-        <div id="b43" class="bedc"><span id="n43"></span></div>
-        <div id="b44" class="bedc"><span id="n44"></span></div>
-        <div id="b45" class="bedc"><span id="n45"></span></div>
-        <div id="b46" class="bedc"><span id="n46"></span></div>
-        <div id="b47" class="bedc"><span id="n47"></span></div>
-        <div id="b48" class="bedc"><span id="n48"></span></div>
-            <div id='y3' class='axisY'>3</div>
-        <div id="b49" class="bedc"><span id="n49"></span></div>
-        <div id="b50" class="bedc"><span id="n50"></span></div>
-        <div id="b51" class="bedc"><span id="n51"></span></div>
-        <div id="b52" class="bedc"><span id="n52"></span></div>
-        <div id="b53" class="bedc"><span id="n53"></span></div>
-        <div id="b54" class="bedc"><span id="n54"></span></div>
-        <div id="b55" class="bedc"><span id="n55"></span></div>
-        <div id="b56" class="bedc"><span id="n56"></span></div>
-        <div id="b57" class="bedc"><span id="n57"></span></div>
-        <div id="b58" class="bedc"><span id="n58"></span></div>
-        <div id="b59" class="bedc"><span id="n59"></span></div>
-        <div id="b60" class="bedc"><span id="n60"></span></div>
-        <div id="b61" class="bedc"><span id="n61"></span></div>
-        <div id="b62" class="bedc"><span id="n62"></span></div>
-        <div id="b63" class="bedc"><span id="n63"></span></div>
-        <div id="b64" class="bedc"><span id="n64"></span></div>
-            <div class="axisY"></div>
-            <div class="axisX">0</div>
-            <div class="axisX">1</div>
-            <div class="axisX">2</div>
-            <div class="axisX">3</div>
-            <div class="axisX">4</div>
-            <div class="axisX">5</div>
-            <div class="axisX">6</div>
-            <div class="axisX">7</div>
-            <div class="axisX">8</div>
-            <div class="axisX">9</div>
-            <div class="axisX">10</div>
-            <div class="axisX">11</div>
-            <div class="axisX">12</div>
-            <div class="axisX">13</div>
-            <div class="axisX">14</div>
-            <div class="axisX">15</div>
-            <div id='enTem'><p>环境温度：<span id='enT'></span></p></div>
-    </div>
 </body>
 </html>
